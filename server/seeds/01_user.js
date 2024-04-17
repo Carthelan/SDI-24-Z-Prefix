@@ -5,9 +5,9 @@
 exports.seed = async function(knex) {
   await knex('user').del();
   await knex('user').insert([
-        {id: 1, first_name: 'Billy', last_name: 'Bob', username: 'Billybob123', password: 'nothing'},
-        {id: 2, first_name: 'Joe', last_name: 'Blow', username: 'Joeblow123', password: 'nothing'},
-        {id: 3, first_name: 'Big', last_name: 'Value', username: 'Bigvalue1', password: 'nothing'},
+        {first_name: 'Billy', last_name: 'Bob', username: 'Billybob123', password: 'nothing'},
+        {first_name: 'Joe', last_name: 'Blow', username: 'Joeblow123', password: 'nothing'},
+        {first_name: 'Big', last_name: 'Value', username: 'Bigvalue1', password: 'nothing'},
       ]);
     };
 

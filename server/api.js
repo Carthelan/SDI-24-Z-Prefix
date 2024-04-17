@@ -14,12 +14,30 @@ app.get('', (req, res) => {
     .then((data) => res.status(200).json(data));
 })
 
-app.get ('/inventory', (req, res) => {
+app.get('/data/inventory', (req, res) => {
     knex('item')
     .select('*')
     .then((data) => res.status(200).json(data));
 })
 
+app.get('/user', (req, res) => {
+    knex('user')
+    .select('*')
+    .then((data) => res.status(200).json(data));
+})
+
+app.post('/user', (req, res) => {
+        knex('user').insert(
+            {
+                first_name: 'Deep',
+                last_name: 'Value',
+                username: '$gamestop',
+                password: 'nothing'
+            })
+        .then(res.status(201).json({message: 'cant believe it worked'}))
+
+})
+    
 
 
 app.listen(PORT, () => {
