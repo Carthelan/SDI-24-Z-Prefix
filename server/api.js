@@ -47,10 +47,25 @@ app.get('/data/user/items/:userid/', (req, res) => {
     .then((data) => res.status(200).json(data))
 })
 
-app.get('/user', (req, res) => {
-    knex('user')
-    .select('*')
-    .then((data) => res.status(200).json(data));
+app.post('/data/login', (req, res) => {
+    console.log(req.body.username[0], req.body.password[0])
+    try {
+        knex('user')
+        .select('*')
+        .where('username', req.body.username[0] )
+        //.then((data) => (data))
+        .then((data) => {
+            console.log(data)
+            if (data[0].password == req.body.password[0]) {
+                res.status(201).json({status: 'Logged in'})
+            } else {
+                res.status(500).json({status: 'User not found'})
+            }
+        });
+    } catch (error) {
+        console.error(error)
+    }
+
 })
 
 app.get('/user/:userid', (req, res) => {

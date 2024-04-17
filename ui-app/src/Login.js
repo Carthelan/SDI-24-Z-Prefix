@@ -5,13 +5,11 @@ function Login() {
 
     const [loginCredentials, setLoginCredentials] = useState({username: '', password: ''})
 
-    //const [loggedIn, setLoggedInState] = useState({username: '', loggedIn: true})
-    //
-    //const handleLogin = (event) => { // make this take field data on Submit
-    //    
-    //}
+
 
     const { username, password } = loginCredentials
+
+    const [loggedInState, setLoggedInState] = useState({username: '', loggedIn: false})
 
     const handleChange = e => {
         setLoginCredentials({...loginCredentials,[e.target.name]:[e.target.value]})
@@ -21,11 +19,18 @@ function Login() {
         e.preventDefault();
         try {
             const response = await fetch('http://localhost:3001/data/login', {
-                method: 'GET',
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginCredentials)
             })
+            console.log(response.status)
             if (response.status === 201) {
-                const logInData = await response.json();
+                setLoggedInState({
+                    ...loggedInState,
+                    username: "lul", 
+                    loggedIn: true
+                })
+                console.log(loggedInState)
             }
         } catch (error) {
             console.error(error)
