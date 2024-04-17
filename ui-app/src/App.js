@@ -7,18 +7,24 @@ import Inventory from './Inventory'
 import {CookiesProvider, useCookies} from 'react-cookie'
 
 function App() {
+  //const [cookies, setCookie] = useCookies('user', {username: {username}, loggedIn: ''})
+  //
+  //const logInHandler (username) => {
+  //  setCookie
+  //}
+
   return (
     <>
     <Router>
-      <div>
-          <Routes>
-            <Route path='/' element={<Home />}> </Route> 
-            {/* <Route path='/profile' element={<UserProfile />}> </Route>  */}
-            {/* <Route path='/login' element={<Login />}> </Route>  */}
-            <Route path='/inventory' element={<Inventory />}> </Route> 
-          </Routes>
-      </div>
-      </Router>
+        <div>
+            <Routes>
+              <Route path='/' element={<Home />}> </Route> 
+              {/* <Route path='/profile' element={<UserProfile />}> </Route>  */}
+              <Route path='/login' element={<Login />}> </Route> 
+              <Route path='/inventory' element={<Inventory />}> </Route> 
+            </Routes>
+        </div>
+    </Router>
     </>
   );
 }

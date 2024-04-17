@@ -21,9 +21,20 @@ function Inventory() {
     return (
        allInventory.map((item) => {
         return (
-            <div>
+            <ul>
+                <li>
+                {item.user_id}
+                </li>
+                <li>
                 {item.item_name}
-            </div>
+                </li>
+                <li>
+                {item.description}
+                </li>
+                <li>
+                {item.quantity}
+                </li>
+            </ul>
         )
        })
 
