@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
 import Login from './Login'
 import Cookies from 'js-cookie'
+import Header from './Header';
 
 function logOut(event) {
     Cookies.remove('Token')
@@ -10,10 +11,16 @@ function logOut(event) {
 }
 
 function Home() {
+    if (Cookies.get('Token') == 'true')
     return (
-         <>
+        <>
+                You are logged in
+            
+        </>
+)
+    return (
+        <>
             <Login />
-            <button onClick={logOut} title="Log Out">Log Out</button>
         </>
     )
 }

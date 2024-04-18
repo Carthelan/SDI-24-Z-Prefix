@@ -41,11 +41,14 @@ app.get('/data/inventory/:itemid/:userid', (req, res) => {
 })
 
 //all items by specific owner
-app.get('/data/user/items/:userid/', (req, res) => {
-    let userid = req.params.userid;
-    knex.select('*').from('item').where('user_id', '=', userid)
+app.post('/data/user/items', (req, res) => {
+    knex('item')
+        .select("item.*")
+        .from('item')
+        .join('user', 'user.id', 'item.user_id')
+        .where('user.username', 'Billybob123')
     .then((data) => res.status(200).json(data))
-})
+}) // Add something here to check if good data is sent back
 
 app.post('/data/login', (req, res) => {
     console.log(req.body.length)

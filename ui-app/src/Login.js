@@ -24,7 +24,7 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (loginCredentials.username || loginCredentials.password == false) {
+        if (loginCredentials.username[0].length == 0 || loginCredentials.password[0].length == 0) {
             return(console.log('Please input Username and Password'))
         } 
         try {
@@ -36,9 +36,9 @@ function Login() {
             console.log(response.status)
             if (response.status === 201) {
                 Cookies.set('Token', 'true')
-                Cookies.set('Username', loginCredentials.username)
-                //console.log(Cookies.get('Token'))
-                //console.log(Cookies.get('Username'))
+                Cookies.set('Username', loginCredentials.username[0])
+                //console.log(loginCredentials.username[0])
+                window.location.reload()
             } else if (response.status == 406) {
                 throw Error('Forgot Username or Password')
             }
