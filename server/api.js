@@ -48,7 +48,10 @@ app.get('/data/user/items/:userid/', (req, res) => {
 })
 
 app.post('/data/login', (req, res) => {
-    console.log(req.body.username[0], req.body.password[0])
+    console.log(req.body.length)
+    if(req.body.length < 2) {
+        res.status(406).json({status: 'Forgot Username or Password'})
+    }
     try {
         knex('user')
         .select('*')
@@ -64,6 +67,7 @@ app.post('/data/login', (req, res) => {
         });
     } catch (error) {
         console.error(error)
+        res.status(500).json({status: "Log in Failed"})
     }
 
 })

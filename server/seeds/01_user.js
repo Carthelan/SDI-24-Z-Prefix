@@ -10,5 +10,3 @@ exports.seed = async function(knex) {
         {first_name: 'Big', last_name: 'Value', username: 'Bigvalue1', password: 'nothing'},
       ]);
     };
-
-
