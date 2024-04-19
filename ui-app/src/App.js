@@ -6,6 +6,7 @@ import Login from './Login'
 import Inventory from './Inventory'
 import Cookies from 'js-cookie'
 import Header from './Header'
+import Register from './Register';
 
 function App() {
   //const [cookies, setCookie] = useCookies('user', {username: {username}, loggedIn: ''})
@@ -24,6 +25,7 @@ function App() {
                 <Route path='/profile' element={<UserProfile />}> </Route> 
                 <Route path='/login' element={<Login />}> </Route> 
                 <Route path='/inventory' element={<Inventory />}> </Route> 
+                <Route path='/register' element={<Register />}></Route>
               </Routes>
           </div>
       </Router>

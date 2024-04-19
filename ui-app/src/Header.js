@@ -22,6 +22,9 @@ function Header() {
                 <button> 
                     <Link to='/profile'>Profile</Link>
                 </button>}
+            <button> 
+                <Link to='/register'>Register New Account</Link>
+            </button>
         </header>
     )
 }

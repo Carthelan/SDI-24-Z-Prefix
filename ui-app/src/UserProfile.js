@@ -7,6 +7,11 @@ function UserProfile() {
     const [userItems, setUserItems] = useState([]);
     const [isToggled, setIsToggled] = useState(false);
     const [itemToggle, setItemToggle] = useState(false)
+    const [newItem, setNewItem] = useState({
+        user_id: '',
+        item_name: '',
+        description: ''
+})
  
     useEffect(() => {
         fetch('http://localhost:3001/data/user/items', {
@@ -19,7 +24,7 @@ function UserProfile() {
     }, []) // add a handler for a response saying '0 items match criteria'
 
     function saveButton() {
-        console.log(JSON.stringify(userItems))
+        console.log((userItems))
         fetch('http://localhost:3001/data/user/items', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -45,6 +50,10 @@ function UserProfile() {
 
     function createItem() {
         
+    }
+
+    function deleteButton() {
+
     }
 
 

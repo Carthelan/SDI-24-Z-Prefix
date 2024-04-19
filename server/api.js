@@ -51,18 +51,18 @@ app.post('/data/user/items', (req, res) => {
 }) // Add something here to check if good data is sent back
 
 app.put('/data/user/items', (req, res) => { //UserProfile put Here
-    const updatedDataArray = req.body.data
+    res.status(200).json(req.body.id)
     knex('item')
-        .join('user', 'user.id', 'item.user_id')
-        .where('user.id', req.body.username)
+        .select('*')
+        .where('item.id', req.body.id)
     .then((data) => res.status(200).json(data))
 })
 
 app.delete('data/user/items', (req, res) => { //UserProfile Delete 
     knex('item')
         .from('item')
-        .join('user', 'user.id', 'item.user_id')
-        .where('user.username', req.body.username)
+        .where('item.user_id', req.body.user_id)
+        .andWhere('item.item_name', req.body.item_name)
 })
 
 app.post('/data/login', (req, res) => {

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
 import Cookies from 'js-cookie'
+import Register from './Register';
 
 
 function Login() {
 
     const [loginCredentials, setLoginCredentials] = useState({username: '', password: ''})
-
-
 
     const { username, password } = loginCredentials
 
