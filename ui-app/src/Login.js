@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom"
 import Cookies from 'js-cookie'
 import Register from './Register';
+const bcrypt = require('bcryptjs');
 
 
 function Login() {
@@ -29,9 +30,12 @@ function Login() {
 
     const handleChange = e => {
         setLoginCredentials({...loginCredentials,[e.target.name]:[e.target.value]})
+
     }
 
     const handleSubmit = async (e) => {
+        const hash = bcrypt.hashsync(loginCredentials.password[0]) 
+        setLoginCredentials({...loginCredentials, password: hash })
         e.preventDefault();
         if (loginCredentials.username[0].length == 0 || loginCredentials.password[0].length == 0) {
             return(console.log('Please input Username and Password'))
@@ -69,9 +73,6 @@ function Login() {
                         <input type='submit' value='Log In'/> 
                     </form>
                     <button onClick={guestLogin} title="Continue as Guest">Log In as Guest</button>
-                </div>
-                <div>
-                    {/* <Link to={<Register />}/> */}
                 </div>
             </div>
         )

@@ -13,7 +13,7 @@ function Register() {
 
     const handleClick = async (e) => {
         e.preventDefault()
-        const hashedPassword = bcrypt.hashSync(registrationData.password)
+        const  hashedPassword = await bcrypt.hashSync(registrationData.password)
 
         setRegistrationData({
                 ...registrationData, 
