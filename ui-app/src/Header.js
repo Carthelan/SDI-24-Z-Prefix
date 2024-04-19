@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie'
+import './Header.css'
 
 function Header() {
 
@@ -10,21 +11,19 @@ function Header() {
         console.log(Cookies.get('Token', 'Usernme'))
     }
     return(
-        <header>
-            {(Cookies.get('Token') == 'true' || 'guest') && 
-            <Link to='/' onClick={logOut} title="Log Out">
-                Log Out
-            </Link>}
-            <button>
-                <Link to='/inventory'>inventory</Link>
-            </button>
+        <header className='header'>
+            {(Cookies.get('Token') == 'true' || 'guest') &&
+                <Link to='/' onClick={logOut} title="Log Out" className='headerButton'>
+                    Log Out
+                </Link>
+                }
+
+            <Link to='/inventory' className='headerButton'>inventory</Link>
+
             {(Cookies.get('Token') == 'true') && 
-                <button> 
-                    <Link to='/profile'>Profile</Link>
-                </button>}
-            <button> 
-                <Link to='/register'>Register New Account</Link>
-            </button>
+                    <Link to='/profile' className='headerButton'>Profile</Link>
+                    }
+                <Link to='/register' className='headerButton'>Register</Link>
         </header>
     )
 }

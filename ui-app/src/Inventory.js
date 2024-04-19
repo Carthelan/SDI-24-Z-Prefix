@@ -19,22 +19,23 @@ function Inventory() {
  
 
     return (
-       allInventory.map((item) => {
-        return (
-            <ul>
-                <li>
-                Item Name: {item.item_name}
-                </li>
-                <li>
-                Description: {item.description}
-                </li>
-                <li>
-                Quantity: {item.quantity}
-                </li>
-            </ul>
-        )
-       })
-
+        <div className='inventoryContainer'>
+            {allInventory.map((item) => {
+            return (
+                <div>
+                    <p>
+                    Item Name: {item.item_name}
+                    </p>
+                    <p>
+                    Description: {item.description}
+                    </p>
+                    <p>
+                    Quantity: {item.quantity}
+                    </p>
+                </div>
+                )
+            })}
+       </div>
     )
 }
 

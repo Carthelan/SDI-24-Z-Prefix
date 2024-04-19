@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: grey;
+}
+.Link {
+    color: inherit; 
+    text-decoration: none;
+}
+.Link:hover, .Link:visited { 
+  color: inherit;
+}
+
+.headerButton {
+    text-decoration: none;
+
+}
