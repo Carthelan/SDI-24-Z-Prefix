@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie'
 import CreateItem from './Components/CreateItem';
+import "./userprofile.css"
 
 
 function UserProfile() {
@@ -57,7 +58,7 @@ function UserProfile() {
     }
 
 
-    const handleChange = (e) => { // Either figure this out or send the entire data array back to the server
+    const handleChange = (e) => {
         const clonedData = [...userItems]
         let itemId = e.target.id - 1
         clonedData[itemId][e.target.name] = e.target.value
@@ -77,19 +78,14 @@ function UserProfile() {
             <div>
                 <button onClick={editButton}>Edit Mode On</button>
                 {userItems.map((item) => {
-                return(
+                return( 
                     <form>
-                        <ul>
-                            <li>
-                                Item Name: <input type='text' id={item.id} name='item_name'  value={item.item_name} onChange={(e) => handleChange(e)}/>
-                            </li>
-                            <li>
-                                Description :<input type='text' id={item.id} name='description' value={item.description} onChange={(e) => handleChange(e)}/>
-                            </li>
-                            <li>
-                                Quantity: <input type='text' id={item.id} name='quantity' value={item.quantity} onChange={(e) => handleChange(e)}/>
-                            </li>
-                        </ul>
+                        <input type='text' id={item.id} name='item_name'  value={item.item_name} onChange={(e) => handleChange(e)}/>
+
+                        Description :<input type='text' id={item.id} name='description' value={item.description} onChange={(e) => handleChange(e)}/>
+
+                        Quantity: <input type='text' id={item.id} name='quantity' value={item.quantity} onChange={(e) => handleChange(e)}/>
+
                     </form>
 
                 )})}
@@ -106,17 +102,19 @@ function UserProfile() {
                 </div>
                 {userItems.map((item) => {
                 return(
-                    <ul>
-                        <li>
-                            Item Name: {item.item_name}
-                        </li>
-                        <li>
+                    <div className='inventoryContainer'>
+                        <div className='itemContainer'>
+                            <p className='infoContainer'>
+                            {item.item_name}
+                            </p>
+                            <p className='infoContainer'>
                             Description: {item.description}
-                        </li>
-                        <li>
+                            </p>
+                            <p className='infoContainer'>
                             Quantity: {item.quantity}
-                        </li>
-                    </ul>
+                            </p>
+                        </div>
+                    </div>
             )})}
             </div>
         )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Cookies from 'js-cookie'
 import Register from './Register';
 
@@ -12,11 +12,20 @@ function Login() {
 
     const [loggedInState, setLoggedInState] = useState({username: '', loggedIn: null})
 
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        let path = '/inventory';
+        navigate(path)
+    }
+
     function guestLogin(event) {
         Cookies.set('Token', 'guest')
         console.log(Cookies.get('Token'))
         
     }
+
+    
 
     const handleChange = e => {
         setLoginCredentials({...loginCredentials,[e.target.name]:[e.target.value]})
@@ -33,15 +42,18 @@ function Login() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginCredentials)
             })
-            console.log(response.status)
+
             if (response.status === 201) {
                 Cookies.set('Token', 'true')
                 Cookies.set('Username', loginCredentials.username[0])
-                console.log(loginCredentials.username[0])
-                window.location.reload()
+                routeChange()
+                
             } else if (response.status == 406) {
+
                 throw Error('Forgot Username or Password')
+
             }
+
         } catch (error) {
             console.error(error)
         }

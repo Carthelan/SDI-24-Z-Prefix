@@ -97,7 +97,7 @@ app.get('/user/:userid', (req, res) => {
     .then((data) => res.status(200).json(data))
 })
 
-app.post('/user/register', (req, res) => {
+app.post('/user/register', (req, res) => { //Create new user
         knex('user').insert(
             {
                 'first_name': req.body.first_name,

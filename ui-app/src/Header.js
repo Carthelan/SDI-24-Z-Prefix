@@ -18,8 +18,8 @@ function Header() {
                 </Link>
                 }
 
-            <Link to='/inventory' className='headerButton'>inventory</Link>
-
+            <Link to='/inventory' className='headerButton'>Inventory</Link>
+            <Link to='/' className='headerButton'>Home</Link>
             {(Cookies.get('Token') == 'true') && 
                     <Link to='/profile' className='headerButton'>Profile</Link>
                     }

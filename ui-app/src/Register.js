@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './register.css'
 const bcrypt = require('bcryptjs');
 
 
@@ -35,7 +36,7 @@ function Register() {
     return (
         <div>
             <div>
-                Hello there
+                Enter Account Details. I wont steal anything
             </div>
             <form>
                 First Name: <input type='text' name='first_name' onChange={handleChange}/>

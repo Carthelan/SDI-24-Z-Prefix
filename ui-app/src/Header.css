@@ -1,11 +1,12 @@
 .header {
     display: flex;
     justify-content: flex-end;
-    background-color: grey;
+    background-color: lightgray;
 }
 .Link {
     color: inherit; 
     text-decoration: none;
+
 }
 .Link:hover, .Link:visited { 
   color: inherit;
@@ -13,5 +14,5 @@
 
 .headerButton {
     text-decoration: none;
-
+    padding:5px;
 }

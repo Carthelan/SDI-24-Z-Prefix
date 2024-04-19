@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Inventory.css'
 
 function Inventory() {
     const [allInventory, setAllInventory] = useState([])
@@ -22,14 +23,14 @@ function Inventory() {
         <div className='inventoryContainer'>
             {allInventory.map((item) => {
             return (
-                <div>
-                    <p>
+                <div className='itemContainer'>
+                    <p className='infoContainer'>
                     Item Name: {item.item_name}
                     </p>
-                    <p>
+                    <p className='infoContainer'>
                     Description: {item.description}
                     </p>
-                    <p>
+                    <p className='infoContainer'>
                     Quantity: {item.quantity}
                     </p>
                 </div>
