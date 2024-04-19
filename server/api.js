@@ -97,13 +97,13 @@ app.get('/user/:userid', (req, res) => {
     .then((data) => res.status(200).json(data))
 })
 
-app.post('/user', (req, res) => {
+app.post('/user/register', (req, res) => {
         knex('user').insert(
             {
-                first_name: 'Deep',
-                last_name: 'Value',
-                username: '$gamestop',
-                password: 'nothing'
+                'first_name': req.body.first_name,
+                'last_name': req.body.last_name,
+                'username': req.body.username,
+                'password': req.body.password
             })
         .then(res.status(201).json({message: 'cant believe it worked'}))
 

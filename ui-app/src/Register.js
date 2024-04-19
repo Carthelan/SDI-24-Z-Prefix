@@ -10,15 +10,24 @@ function Register() {
         password: ''
     })
 
-    const handleSubmit = (e) => {
-        const hash = bcrypt.hashSync(registrationData.password)
-        registrationData = [...registrationData, {password: hash}]
-        console.log(registrationData)
+    const handleClick = async (e) => {
+        e.preventDefault()
+        const hashedPassword = bcrypt.hashSync(registrationData.password)
+
+        setRegistrationData({
+                ...registrationData, 
+                password: hashedPassword
+            })
+        const response = await fetch('http://localhost:3001/user/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(registrationData)
+        })
     }
 
 
     const handleChange = e => {
-        setRegistrationData({...registrationData, [e.target.name]:[e.target.value]})
+        setRegistrationData({...registrationData, [e.target.name]: e.target.value})
     }
 
 
@@ -33,7 +42,7 @@ function Register() {
                 Last Name: <input type='text' name='last_name' onChange={handleChange}/>
                 Username: <input type='text' name='username' onChange={handleChange}/>
                 Password: <input type='text' name='password' onChange={handleChange}/>
-                <button onSubmit={handleSubmit}/>
+                <button onClick={handleClick}>Submit</button>
             </form>
         </div>
     )
