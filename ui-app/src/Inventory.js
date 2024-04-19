@@ -23,16 +23,13 @@ function Inventory() {
         return (
             <ul>
                 <li>
-                {item.user_id}
+                Item Name: {item.item_name}
                 </li>
                 <li>
-                {item.item_name}
+                Description: {item.description}
                 </li>
                 <li>
-                {item.description}
-                </li>
-                <li>
-                {item.quantity}
+                Quantity: {item.quantity}
                 </li>
             </ul>
         )

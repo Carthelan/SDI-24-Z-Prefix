@@ -46,9 +46,24 @@ app.post('/data/user/items', (req, res) => {
         .select("item.*")
         .from('item')
         .join('user', 'user.id', 'item.user_id')
-        .where('user.username', 'Billybob123')
+        .where('user.username', req.body.username)
     .then((data) => res.status(200).json(data))
 }) // Add something here to check if good data is sent back
+
+app.put('/data/user/items', (req, res) => { //UserProfile put Here
+    const updatedDataArray = req.body.data
+    knex('item')
+        .join('user', 'user.id', 'item.user_id')
+        .where('user.id', req.body.username)
+    .then((data) => res.status(200).json(data))
+})
+
+app.delete('data/user/items', (req, res) => { //UserProfile Delete 
+    knex('item')
+        .from('item')
+        .join('user', 'user.id', 'item.user_id')
+        .where('user.username', req.body.username)
+})
 
 app.post('/data/login', (req, res) => {
     console.log(req.body.length)

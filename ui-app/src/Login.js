@@ -16,6 +16,7 @@ function Login() {
     function guestLogin(event) {
         Cookies.set('Token', 'guest')
         console.log(Cookies.get('Token'))
+        
     }
 
     const handleChange = e => {
@@ -37,7 +38,7 @@ function Login() {
             if (response.status === 201) {
                 Cookies.set('Token', 'true')
                 Cookies.set('Username', loginCredentials.username[0])
-                //console.log(loginCredentials.username[0])
+                console.log(loginCredentials.username[0])
                 window.location.reload()
             } else if (response.status == 406) {
                 throw Error('Forgot Username or Password')

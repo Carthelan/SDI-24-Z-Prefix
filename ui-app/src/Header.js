@@ -8,12 +8,13 @@ function Header() {
         Cookies.remove('Token')
         Cookies.remove('Username')
         console.log(Cookies.get('Token', 'Usernme'))
-        window.location.reload()
     }
     return(
         <header>
-            {console.log(Cookies.get('Token'))}
-            <button onClick={logOut} title="Log Out">Log Out</button>
+            {(Cookies.get('Token') == 'true' || 'guest') && 
+            <Link to='/' onClick={logOut} title="Log Out">
+                Log Out
+            </Link>}
             <button>
                 <Link to='/inventory'>inventory</Link>
             </button>

@@ -14,8 +14,7 @@ function Home() {
     if (Cookies.get('Token') == 'true')
     return (
         <>
-                You are logged in
-            
+            <Link to='/profile' />    
         </>
 )
     return (
